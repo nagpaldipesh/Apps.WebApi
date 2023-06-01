@@ -1,4 +1,6 @@
-﻿using WebApi.Services.Interfaces;
+﻿using System.Diagnostics;
+using WebApi.Services.Documents;
+using WebApi.Services.Interfaces;
 
 namespace WebApi.Services {
     public class FileService : IFileService {
@@ -14,5 +16,6 @@ namespace WebApi.Services {
         public async Task<string> ReadFileAsync(string filePath) {
             return await File.ReadAllTextAsync(filePath);
         }
+
     }
 }

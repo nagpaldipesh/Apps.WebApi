@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using Webapi.Data.Repositories;
 using Webapi.Data.Repositories.Interfaces;
+using WebApi.Data;
 using WebApi.DbEntities;
 using WebApi.Services;
 using WebApi.Services.Interfaces;
@@ -19,6 +21,10 @@ builder.Services.AddScoped<IAttributeService, AttributeService>();
 builder.Services.AddScoped<IPageService, PageService>();
 builder.Services.AddScoped<IGenericRepository<Page>, GenericRepository<Page>>();
 builder.Services.AddScoped<IGenericRepository<Attribute>, GenericRepository<Attribute>>();
+
+builder.Services.AddDbContext<WebApiContext>(options => {
+    options.UseInMemoryDatabase("WebApi");
+});
 
 
 var app = builder.Build();

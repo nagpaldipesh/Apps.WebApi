@@ -1,7 +1,11 @@
-﻿using System.Text.Json;
+﻿using Microsoft.Extensions.Configuration;
+using QuestPDF.Fluent;
+using System.Diagnostics;
+using System.Text.Json;
 using Webapi.Data.Repositories.Interfaces;
-using WebApi.Models;
+using WebApi.Services.Documents;
 using WebApi.Services.Interfaces;
+using WebApi.Services.Models;
 using Attribute = WebApi.DbEntities.Attribute;
 
 namespace WebApi.Services {
@@ -62,6 +66,16 @@ namespace WebApi.Services {
             _attributeRepository.AddRange(attributes);
 
             await _attributeRepository.SaveAsync();
+        }
+
+        public async Task GenerateAttributeDocumentAsync() {
+            var attributes = await GetAttributesAsync();
+            var filePath = "attributes.pdf";
+
+            var document = new AttributeDocument(attributes);
+            document.GeneratePdf(filePath);
+
+            Process.Start("explorer.exe", filePath);
         }
     }
 }

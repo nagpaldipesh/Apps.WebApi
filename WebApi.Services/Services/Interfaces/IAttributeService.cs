@@ -5,5 +5,6 @@ namespace WebApi.Services.Interfaces {
 
         Task FetchAttributesAsync();
         Task<IEnumerable<Attribute>> GetAttributesAsync();
+        Task GenerateAttributeDocumentAsync();
     }
 }

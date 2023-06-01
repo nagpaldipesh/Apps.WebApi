@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using QuestPDF.Fluent;
-using System.Diagnostics;
-using WebApi.Documents;
 using WebApi.Services.Interfaces;
 
 namespace WebApi.Controllers {
@@ -15,20 +12,14 @@ namespace WebApi.Controllers {
 
         [HttpGet]
         public async Task<IActionResult> FetchPages() {
-            await _pageService.FetchPages();
+            await _pageService.FetchPagesAsync();
             return Ok();
         }
 
         [HttpGet("Document")]
         public async Task<IActionResult> GetAttributesDocument() {
-            
-            var pages = await _pageService.GetPages();
-            var filePath = "pages.pdf";
+            await _pageService.GeneratePagesDocumentAsync();
 
-            var document = new PagesDocument(pages);
-            document.GeneratePdf(filePath);
-
-            Process.Start("explorer.exe", filePath);
             return Ok();
         }
 

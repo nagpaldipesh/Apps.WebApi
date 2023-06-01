@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using QuestPDF.Fluent;
-using System.Diagnostics;
-using WebApi.Documents;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.Services.Interfaces;
 
 namespace WebApi.Controllers {
@@ -23,13 +19,7 @@ namespace WebApi.Controllers {
 
         [HttpGet("Document")]
         public async Task<IActionResult> GetAttributesDocument() {
-            var attributes = await _attributeService.GetAttributesAsync();
-            var filePath = "attributes.pdf";
-
-            var document = new AttributeDocument(attributes);
-            document.GeneratePdf(filePath);
-
-            Process.Start("explorer.exe", filePath);
+            await _attributeService.GenerateAttributeDocumentAsync();
 
             return Ok();
         }

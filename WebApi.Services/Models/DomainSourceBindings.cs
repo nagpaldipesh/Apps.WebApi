@@ -1,6 +1,6 @@
 ﻿using Attribute = WebApi.DbEntities.Attribute;
 
-namespace WebApi.Models {
+namespace WebApi.Services.Models {
 
     public class DomainModels {
         public ICollection<DomainSourceBinding> DomainSourceBindings { get; set; }

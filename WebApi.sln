@@ -5,9 +5,11 @@ VisualStudioVersion = 17.6.33417.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{45ECB4AC-26A4-45F7-8742-F8405EB9F7AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Data", "WebApi.Data\WebApi.Data.csproj", "{470D0D16-6A29-46C7-8CE7-8BB6840162AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Data", "WebApi.Data\WebApi.Data.csproj", "{470D0D16-6A29-46C7-8CE7-8BB6840162AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.DbEntities", "WebApi.DbEntities\WebApi.DbEntities.csproj", "{3C84AAC0-4257-4E87-BDC8-B493FA4E5E93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.DbEntities", "WebApi.DbEntities\WebApi.DbEntities.csproj", "{3C84AAC0-4257-4E87-BDC8-B493FA4E5E93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Services", "WebApi.Services\WebApi.Services.csproj", "{888FF570-B0B5-46D7-9050-6E8AE9CC6FFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{3C84AAC0-4257-4E87-BDC8-B493FA4E5E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C84AAC0-4257-4E87-BDC8-B493FA4E5E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C84AAC0-4257-4E87-BDC8-B493FA4E5E93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{888FF570-B0B5-46D7-9050-6E8AE9CC6FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888FF570-B0B5-46D7-9050-6E8AE9CC6FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888FF570-B0B5-46D7-9050-6E8AE9CC6FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888FF570-B0B5-46D7-9050-6E8AE9CC6FFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

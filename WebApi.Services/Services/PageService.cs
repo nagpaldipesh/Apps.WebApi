@@ -1,6 +1,10 @@
-﻿using System.Text.Json;
+﻿using Microsoft.Extensions.Configuration;
+using QuestPDF.Fluent;
+using System.Diagnostics;
+using System.Text.Json;
 using Webapi.Data.Repositories.Interfaces;
 using WebApi.DbEntities;
+using WebApi.Services.Documents;
 using WebApi.Services.Interfaces;
 
 namespace WebApi.Services {
@@ -16,7 +20,7 @@ namespace WebApi.Services {
             _pageRepository = pageRepository;
         }
 
-        public async Task FetchPages() {
+        public async Task FetchPagesAsync() {
             HashSet<Page> pages = new HashSet<Page>();
             var filesPath = _fileService.GetFiles(_filePath);
             var tasks = new List<Task<string>>();
@@ -43,7 +47,7 @@ namespace WebApi.Services {
             await SavePagesIntoDatabase(pages);
         }
 
-        public async Task<IEnumerable<Page>> GetPages() {
+        public async Task<IEnumerable<Page>> GetPagesAsync() {
             return await _pageRepository.GetAllNoTrackingAsync();
         }
 
@@ -51,7 +55,17 @@ namespace WebApi.Services {
             _pageRepository.AddRange(pages);
             await _pageRepository.SaveAsync();
         }
+        public async Task GeneratePagesDocumentAsync() {
+            var pages = await GetPagesAsync();
+            var filePath = "pages.pdf";
 
+            var document = new PagesDocument(pages);
+            document.GeneratePdf(filePath);
+
+            Process.Start("explorer.exe", filePath);
+
+            Process.Start("explorer.exe", filePath);
+        }
 
     }
 }
